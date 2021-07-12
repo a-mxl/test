@@ -1,0 +1,82 @@
+#include <REGX52.H>
+	
+typedef unsigned int u16;	  
+typedef unsigned char u8;
+
+
+sbit LSA=P2^2;
+sbit LSB=P2^3;
+sbit LSC=P2^4;
+
+
+u8 code smgduan[17]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+			         0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
+
+
+void delay(u16 i)
+{
+	while(i--);	
+}
+
+/*void DigDisplay(u16 num)
+{
+	u8 i;
+	u16 b;
+	*/
+	    
+/*	while(1){
+			u8 i,j,z,k;
+		for(i=0;i<=9;i++){
+				LSA=1;LSB=1;LSC=1;
+		//for(i=0;i<=9;i++)
+	
+	            P0=smgduan[i];}
+							//delay(1000);
+				for(j=1;j<=9;j++){
+				LSA=0;LSB=1;LSC=1; 
+					P0=smgduan[j];}
+							//delay(00);
+		    for(z=2;z<=9;z++)
+				LSA=1;LSB=0;LSC=1; 
+				P0=smgduan[bits];
+							//delay(300);
+				for(k=0;k<=9;k++){
+				LSA=1;LSB=0;LSC=0;
+				P0=smgduan[k];}
+							//delay(1000);
+
+	}*/
+void main()
+{	
+
+	while(1){
+			u8 i,j,z,k;
+		for(i=0;i<=9;i++){
+				LSA=1;LSB=1;LSC=1;
+		//for(i=0;i<=9;i++)
+	
+	    P0=smgduan[i];
+			//delay(3000);
+			
+			//P0=0x00;
+		
+		
+							//delay(1000);
+				for(j=1;j<=9;j++){
+				LSA=0;LSB=1;LSC=1; 
+					P0=smgduan[j];
+				P0=0x00;
+				}
+					//delay(00);
+		    for(z=2;z<=9;z++){
+				LSA=1;LSB=0;LSC=1; 
+				P0=smgduan[z];
+					P0=0x00;}
+							//delay(300);
+				for(k=0;k<=9;k++){
+				LSA=1;LSB=0;LSC=0;
+				P0=smgduan[k];
+				P0=0x00;}
+							delay(1000);}
+	}		
+}
