@@ -1,0 +1,69 @@
+import pandas as pd
+import pandas as pd
+all_data = pd.read_csv('studentmath.csv')
+
+# 统计行数
+row_num = len(all_data)
+
+# 获取各字段名称
+col_array = all_data.columns
+
+# 读取指定字段信息
+data = all_data[['school','sex','age','address']]
+
+print(row_num )
+print(col_array )
+print(data )
+
+
+import pandas as pd
+data = pd.read_csv('studentmath.csv')
+
+# 标称型特征
+nominal_array = list(data.select_dtypes(include=['object']))
+# 数值型特征
+numerical_array = list(data.select_dtypes(include = ['int','float']))
+
+print(nominal_array)
+print(numerical_array)
+
+
+
+import pandas as pd
+data = pd.read_csv('studentmath.csv')
+print(data.info())
+
+# 筛选样本
+new_data= data.dropna()
+
+print(new_data)
+
+import pandas as pd
+data = pd.read_csv('studentmath.csv')
+
+# 均值
+average_grade = data[['G1','G2','G3']].mean()
+
+print(average_grade )
+
+import pandas as pd
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize = (10, 10))
+data = pd.read_csv('newdata.csv')
+
+# 绘制
+scores = ['G1', 'G2', 'G3']
+grades_df = data[scores]
+grades_df.boxplot()
+
+
+import pandas as pd
+data = pd.read_csv('newdata.csv')
+print(data[['absences']].head())
+
+# 二值化转换
+from sklearn import preprocessing
+binarizer = preprocessing.Binarizer(threshold=8)
+data['new_absences'] = binarizer.transform(data[['absences']])
+ 
+print(data[['new_absences']].head())
